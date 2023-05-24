@@ -13,7 +13,7 @@ const App = () => {
     ]
 
 
-    const [todos, ] = useState(initialTodos);
+    const [todos,setTodos ] = useState(initialTodos);
     const [value, setValue] = useState("");
 
     const erase = () => {
@@ -22,6 +22,7 @@ const App = () => {
 
     const submit = () => {
         console.log(value);
+        setTodos([ ...todos, {id: 4, title: value, checked: false}]);
         erase();
     }
 
