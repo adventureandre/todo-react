@@ -6,14 +6,8 @@ const App = () => {
     const ESCAPE_KEY = 27;
     const ENTER_KEY = 13;
 
-    const initialTodos = [
-        {id: 1, title: "estuda React", checked: false},
-        {id: 2, title: "estudar Ingles", checked: false},
-        {id: 3, title: "vida nova", checked: false}
-    ]
 
-
-    const [todos,setTodos ] = useState(initialTodos);
+    const [todos, setTodos] = useState([]);
     const [value, setValue] = useState("");
 
     const erase = () => {
@@ -21,8 +15,8 @@ const App = () => {
     }
 
     const submit = () => {
-        console.log(value);
-        setTodos([ ...todos, {id: 4, title: value, checked: false}]);
+        console.log(todos);
+        setTodos([...todos, {id: new Date().getTime(), title: value, checked: false}]);
         erase();
     }
 
@@ -36,6 +30,11 @@ const App = () => {
         } else if (event.which === ESCAPE_KEY) {
             erase();
         }
+    }
+
+    const onToggle = (todo) => {
+       setTodos(todos.map((obj) =>
+           obj.id === todo.id ? {...obj, checked: !todo.checked} : obj))
     }
 
     return (
@@ -53,8 +52,11 @@ const App = () => {
 
                 <ul className='todo-list'>
                     {todos.map((todo) => (
-                        <li key={todo.id.toString()} >
-                        <span className='todo'>{todo.title}</span>
+                        <li key={todo.id.toString()}>
+                        <span
+                            onClick={() => onToggle(todo)}
+                            className={["todo", todo.checked ? 'checked' : ''].join(' ')}
+                        >{todo.title}</span>
                             <button className='remove' type='button'>
                                 <MdDelete size={28}/>
                             </button>
