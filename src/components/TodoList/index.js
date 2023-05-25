@@ -1,5 +1,6 @@
 import {MdDelete} from "react-icons/md";
 import React from "react";
+import "./styles.css"
 
 const TodoList = ({todos, onToggle, onRemove }) => {
     return (

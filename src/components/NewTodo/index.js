@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './styles.css'
 
 const NewTodo = ({onNewTodo}) => {
     const ESCAPE_KEY = 27;
