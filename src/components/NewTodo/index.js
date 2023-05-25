@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-
 const NewTodo = ({onNewTodo}) => {
     const ESCAPE_KEY = 27;
     const ENTER_KEY = 13;
@@ -39,4 +38,5 @@ const NewTodo = ({onNewTodo}) => {
         />
     )
 };
+
 export default NewTodo;
